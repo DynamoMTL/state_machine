@@ -168,7 +168,8 @@ module StateMachine
       def catch_exceptions
         begin
           yield
-        rescue Exception
+        rescue Exception => e
+          Raven.capture_exception(e)
           rollback
           raise
         end
