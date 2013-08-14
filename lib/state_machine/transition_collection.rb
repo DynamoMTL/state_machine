@@ -168,7 +168,7 @@ module StateMachine
         begin
           yield
         rescue Exception => e
-          Raven.capture_exception(e)
+          Honeybadger.notify(e)
           rollback
           raise
         end
